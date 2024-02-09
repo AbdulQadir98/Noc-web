@@ -32,11 +32,11 @@ Step-by-step guide on how to install the necessary dependencies and get the proj
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/AbdulQadir98/your_project.git
+   git clone https://github.com/AbdulQadir98/Noc-web.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd your_project
+   cd Noc-web
    ```
 3. Create a virtual environment (optional but recommended):
    ```sh
@@ -58,10 +58,6 @@ Instructions on how to use the project once it's set up. For example:
 1. Run the Flask application:
    ```sh
    flask run
-   ```
-   or
-   ```sh
-   python run.py
    ```
 2. Open a web browser and navigate to `http://localhost:5000` to view the application.
 
