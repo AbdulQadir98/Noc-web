@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nocturne</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <main>
+        <div id="side-menu">
+            <a class="tab-link" data-tab="home">Home</a>
+            <a class="tab-link" data-tab="camera">Camera</a>
+            <a class="tab-link" data-tab="models">Models</a>
+        </div>
+    
+        <div id="content">
+            <div id="home" class="tab-content active">
+                <h2>Welcome to the Home Page!</h2>
+                <p>This is the content of the home page.</p>
+            </div>
+    
+            <div id="camera" class="tab-content">
+                <h2>Camera Page</h2>
+                <p>This is the content of the camera page</p>
+            </div>
+    
+            <div id="models" class="tab-content">
+                <h2>Models Page</h2>
+                <p>This is the content of the model page</p>
+                
+                <div class="modelset">
+                    <!-- {% for model_name in models %} -->
+                    <!-- {% for _ in range(models) %}
+                        <label class="model-card" onclick="">
+                            <input type="checkbox" name="model1" class="checkbox-input">
+                            <h3>Model 1</h3>
+                        </label>
+                    {% endfor %} -->
+                </div>
+
+                <form id="uploadForm" action="{{ url_for('upload_model') }}" method="POST" enctype="multipart/form-data">
+                    <label for="modelFile">Choose a model file:</label>
+                    <input type="file" id="modelFile" name="modelFile" accept=".h5, .tf, .onnx, .pt">
+                    <button type="submit" id="addModelBtn">Add Model</button>
+                </form>
+            </div>
+        </div>
+    
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </main>
+</body>
+</html>
