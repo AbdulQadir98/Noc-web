@@ -1,6 +1,5 @@
 import os
 
-
 class NocturneFramework:
     def __init__(self, greeting="Hello"):
         self.greeting = greeting
@@ -12,9 +11,8 @@ class NocturneFramework:
         folder_path = "app/models"
         extension = ".pt"
 
-        # Get the list of files in the folder with the specified extension
+        # Get the list of models with pt extension
         files = [file for file in os.listdir(
             folder_path) if file.endswith(extension)]
 
-        # return files
         return files
