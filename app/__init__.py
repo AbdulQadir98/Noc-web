@@ -9,16 +9,18 @@ framework = NocturneFramework()
 # Create a Flask application instance
 app = Flask(__name__)
 
-
+# test framework
 @app.route('/hello')
 def hello():
     return framework.say_hello("Vili")
 
+@app.route('/')
+def index():
+    return redirect('/hello')
 
 @app.route('/home')
 def home():
     return render_template('home.html', models=framework.get_models())
-
 
 @app.route('/upload_model', methods=['POST'])
 def upload_model():

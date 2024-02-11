@@ -17,4 +17,4 @@ class NocturneFramework:
             folder_path) if file.endswith(extension)]
 
         # return files
-        return len(files)
+        return files

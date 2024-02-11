@@ -31,13 +31,12 @@
                 <p>This is the content of the model page</p>
                 
                 <div class="modelset">
-                    <!-- {% for model_name in models %} -->
-                    <!-- {% for _ in range(models) %}
+                    {% for model_name in models %}
                         <label class="model-card" onclick="">
-                            <input type="checkbox" name="model1" class="checkbox-input">
-                            <h3>Model 1</h3>
+                            <input type="checkbox" name="{{ model_name }}" class="checkbox-input">
+                            <div>{{ model_name }}</div>
                         </label>
-                    {% endfor %} -->
+                    {% endfor %}
                 </div>
 
                 <form id="uploadForm" action="{{ url_for('upload_model') }}" method="POST" enctype="multipart/form-data">
