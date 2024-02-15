@@ -43,6 +43,17 @@ body {
     display: block;
 }
 
+/* Styling for video frames in camera content */
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.video-frame {
+    border: 2px solid #333;
+}
+
+/* Styling for model cards in model content */
 .modelset {
     display: flex;
     justify-content: center;
@@ -102,3 +113,4 @@ button:hover {
     background-color: #45a049;
 }
 
+/* Styling for  */

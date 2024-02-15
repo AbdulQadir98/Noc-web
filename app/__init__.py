@@ -1,7 +1,8 @@
+import cv2
 from app.framework.framework import NocturneFramework
 from app.models import *
 from app.views import *
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, Response, redirect, url_for
 import os
 
 framework = NocturneFramework()
@@ -36,3 +37,24 @@ def upload_model():
 
     # Handle the case where no file is selected
     return redirect(url_for('home'))
+
+
+# capturing frames from the camera and yielding them as continuous stream of JPEG images.
+def camera_feed():
+    cap = cv2.VideoCapture(0)
+
+    while True:
+        success, frame = cap.read()
+        if not success:
+            break
+
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
+
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(camera_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
