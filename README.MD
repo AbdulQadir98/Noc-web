@@ -43,9 +43,17 @@ Step-by-step guide on how to install the necessary dependencies and get the proj
    python -m venv venv
    ```
 4. Activate the virtual environment:
+
+   -for windows:
    ```sh
    venv\Scripts\activate
    ```
+
+   -for bash:
+   ```sh
+   source venv/bin/activate
+   ```
+   
 5. Install the required dependencies:
    ```sh
    pip install -r requirements.txt
