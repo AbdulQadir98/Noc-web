@@ -14,7 +14,13 @@ class NocturneFramework:
     def __del__(self):
         self.cap.release()
 
+    def enhance(self, frame):
+        frame_grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        enhanced_frame = cv2.cvtColor(frame_grey, cv2.COLOR_GRAY2RGB)
+        return enhanced_frame
+
     def process_frame(self, frame):
+        frame = self.enhance(frame)
         results = self.model(frame)
         for detection in results:
             boxes = detection.boxes.xyxy.cpu().numpy().astype(int)
@@ -32,7 +38,7 @@ class NocturneFramework:
             if not success:
                 break
 
-            frame = self.process_frame(frame)
+            # frame = self.process_frame(frame)
 
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
