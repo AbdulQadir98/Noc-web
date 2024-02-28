@@ -17,7 +17,7 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html', models=framework.get_models())
+    return render_template('home.html', models=framework.get_weights())
 
 
 @app.route('/upload_model', methods=['POST'])
