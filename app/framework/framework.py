@@ -4,7 +4,7 @@ from ultralytics import YOLO
 
 
 class NocturneFramework:
-    def __init__(self, camera_index=0, app='web', model_path='app/models/best.pt'):
+    def __init__(self, camera_index=0, app='web', model_path='app/models/yolov8n.pt'):
         self.camera_index = camera_index
         self.app = app
         self.cap = cv2.VideoCapture(camera_index)
