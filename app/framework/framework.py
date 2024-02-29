@@ -4,15 +4,21 @@ from ultralytics import YOLO
 
 
 class NocturneFramework:
-    def __init__(self, camera_index=0, app='web', model_path='app/models/yolov8n.pt'):
+    def __init__(self, camera_index=1, app='web', model_path='app/models/yolov8n.pt'):
         self.camera_index = camera_index
         self.app = app
-        self.cap = cv2.VideoCapture(camera_index)
+        self.initialize_camera()
         self.model = YOLO(model_path)
         self.running = False
 
     def __del__(self):
         self.cap.release()
+
+    def initialize_camera(self):
+        self.cap = cv2.VideoCapture(self.camera_index)
+        if not self.cap.isOpened():
+            self.camera_index = 0
+            self.cap = cv2.VideoCapture(self.camera_index)
 
     def enhance(self, frame):
         frame_grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -20,7 +26,7 @@ class NocturneFramework:
         return enhanced_frame
 
     def process_frame(self, frame):
-        frame = self.enhance(frame)
+        # frame = self.enhance(frame)
         results = self.model(frame)
         for detection in results:
             boxes = detection.boxes.xyxy.cpu().numpy().astype(int)
